@@ -1,37 +1,30 @@
 package ru.spring.project.utils;
 
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import ru.spring.project.service.holder.QuestionAndAnswers;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 import java.util.stream.Collectors;
 
+@Component
 public class ResourceReader {
-    private Properties properties;
 
-    public ResourceReader() {
-        initProperties();
-    }
+    private String path;
 
-    private void initProperties() {
-        try (InputStream resourceAsStream = ResourceReader.class.getClassLoader().getResourceAsStream("config.properties")) {
-            properties = new Properties();
-            properties.load(resourceAsStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public ResourceReader(@Value("${questions.path}")String path) {
+        this.path = path;
     }
 
     public List<QuestionAndAnswers> getQuestionList() {
-        try (InputStream resourceAsStream = ResourceReader.class.getClassLoader().getResourceAsStream(properties.getProperty("questions.path"));
+        try (InputStream resourceAsStream = ResourceReader.class.getClassLoader().getResourceAsStream(path);
              BufferedInputStream buf = new BufferedInputStream(resourceAsStream)) {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
@@ -54,9 +47,5 @@ public class ResourceReader {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public Properties getProperties() {
-        return properties;
     }
 }

@@ -1,6 +1,7 @@
 package ru.spring.project.service.handlers;
 
 
+import org.springframework.stereotype.Service;
 import ru.spring.project.model.User;
 import ru.spring.project.service.holder.QuestionAndAnswers;
 
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+@Service
 public class UserHandler {
 
     public User getUserWithAnswers(List<QuestionAndAnswers> questionList) {
