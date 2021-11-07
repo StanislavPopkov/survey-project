@@ -13,6 +13,7 @@ import java.util.List;
 @Configuration
 @ComponentScan
 @PropertySource("classpath:config.properties")
+@EnableAspectJAutoProxy
 public class Main {
 
     public static void main(String[] args) {
