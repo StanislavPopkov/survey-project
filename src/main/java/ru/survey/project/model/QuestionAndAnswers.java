@@ -1,4 +1,4 @@
-package ru.spring.project.service.holder;
+package ru.survey.project.model;
 
 import java.util.List;
 
@@ -29,8 +29,4 @@ public class QuestionAndAnswers {
         return answersList;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Ответ пользователя на вопрос: %s: %s", question, answersList.get(userChoice - 1));
-    }
 }

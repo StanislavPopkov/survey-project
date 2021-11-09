@@ -1,7 +1,5 @@
-package ru.spring.project.model;
+package ru.survey.project.model;
 
-
-import ru.spring.project.service.holder.QuestionAndAnswers;
 
 import java.util.List;
 
@@ -27,14 +25,5 @@ public class User {
 
     public List<QuestionAndAnswers> getQuestionList() {
         return questionList;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", questionList=" + questionList +
-                '}';
     }
 }

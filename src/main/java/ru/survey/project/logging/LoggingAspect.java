@@ -1,4 +1,4 @@
-package ru.spring.project.logging;
+package ru.survey.project.logging;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 @Component
 public class LoggingAspect {
 
-    @Around("execution(* ru.spring.project.utils.ResourceReader.*(..))")
+    @Around("execution(* ru.survey.project.dao.ResourceReader.*(..))")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Прокси : " + joinPoint.getThis().getClass().getName());
         System.out.println("Класс : " + joinPoint.getTarget().getClass().getName());
